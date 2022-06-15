@@ -1,0 +1,147 @@
+﻿@model csharp_bibliotecaMvc.Models.Libro
+
+@{
+    ViewData["Title"] = "Create";
+}
+@{using (Html.BeginForm("Create", "Libroes", FormMethod.Post))}
+
+    <table cellpadding="0" cellspacing="0" class="center">
+        <tr>
+            <th colspan="2" align="center">Inserisci i dati del libro:</th>
+        </tr>
+        <tr>
+            <td><p style="color:red;font-weight: bold;">Titolo: </p></td>
+            <td>
+                @Html.TextBoxFor(m => m.Titolo)
+            </td>
+        </tr>
+        <tr>
+            <td><p style="color:red;font-weight: bold;">Scaffale:</p> </td>
+            <td>
+                @Html.TextBoxFor(m => m.Scaffale)
+            </td>
+        </tr>
+        <tr>
+            <td><p style="color:red;font-weight: bold;">Stato: </p></td>
+            <td>
+                @Html.DropDownListFor(m => m.Stato, new List<SelectListItem>
+                { new SelectListItem{Text="Disponibile", Value="Disponibile"},
+                    new SelectListItem{Text="Prestito", Value="Prestito"}}, "Please select")
+            </td>
+        </tr>
+        <tr>
+
+
+
+
+
+            <td><p style="color:red;font-weight: bold;">Autori: </p></td>
+            <td>
+                <select name="autori" multiple>
+
+                 @foreach (var dati in ViewData["Autori"] as List<Autore>)
+                    {
+
+                        <option value="@dati.Cognome-@dati.Nome-@dati.DataNascita">@dati.Nome @dati.Cognome @dati.DataNascita</option>
+                    }
+             
+                 </select>
+            
+            
+            </td>
+
+
+
+
+
+         </tr>
+
+        
+
+
+        
+           
+        <tr>
+        <td>
+
+            
+
+
+        <button  runat="server" id="BUTTON1" class="btn-primary">
+               <b><i> Aggiungi Autore </i> </b> 
+             </button>
+             </td>
+      </tr>
+        <tr id="AutoreForm"></tr>
+        
+             @*
+                 <tr>  
+                    <td style="font-size: 12px; padding-left: 2px">  
+                        <input data-val="true" data-val-required="The Cognome field is required." id="Autori_0__Cognome" name="Autori[0].Cognome" type="text" value="Alighieri">;
+                        <input data-val="true" data-val-required="The Nome field is required." id="Autori_0__Nome" name="Autori[0].Nome" type="text" value="Dante">;
+                        <input data-val="true" data-val-required="The DataNascita field is required." id="Autori_0__DataNascita" name="Autori[0].DataNascita" type="text" value="26/04/1340 00:00:00">;
+                    </td>  
+                </tr>
+             *@
+
+
+        @*<tr>
+            <td><p style="color:red;font-weight: bold;">Lista autori</p></td>
+            <td>
+        @if (Model != null && Model.Autori != null)  
+            {  
+                for (int i = 0; i < Model.Autori.Count(); i++)  
+                {  
+                <tr >  
+                    <td style="font-size: 12px; padding-left: 2px">  
+                        @Html.TextBoxFor(m => m.Autori[i].Cognome);
+                        @Html.TextBoxFor(m => m.Autori[i].Nome);
+                        @Html.TextBoxFor(m => m.Autori[i].DataNascita);
+                    </td>  
+                </tr>  
+                 
+                }  
+            }  
+            </td>
+        </tr>*@
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Submit"/></td>
+        </tr>
+
+
+        
+    </table>
+}
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    
+
+    <script>
+
+        
+
+        let i = 0;
+
+        function createHtmlAutori() {
+            event.preventDefault();
+            const NuovoAutore = document.getElementById("AutoreForm").innerHTML += '  <td style="font-size: 12px; padding-left: 2px">  <input data-val="true" data-val-required="The Cognome field is required." id="Autori_'+i+'__Cognome" name="Autori['+i+'].Cognome" type="text" value="">;<input data-val="true" data-val-required="The Nome field is required." id="Autori_'+i+'__Nome" name="Autori['+i+'].Nome" type="text" value="">;<input data-val="true" data-val-required="The DataNascita field is required." id="Autori_'+i+'__DataNascita" name="Autori['+i+'].DataNascita" type="text" value="26/04/1340 00:00:00">;</td> ';
+             i++;
+        };
+
+        const CreaHtml = document.getElementById("BUTTON1").addEventListener("click", createHtmlAutori);
+
+
+        
+
+
+
+
+
+
+
+       
+
+    </script>
+}
