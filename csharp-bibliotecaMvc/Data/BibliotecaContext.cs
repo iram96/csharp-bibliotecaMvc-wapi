@@ -25,7 +25,6 @@ namespace csharp_bibliotecaMvc.Data
             modelBuilder.Entity<Libro>().ToTable("Libro");
             modelBuilder.Entity<Autore>().ToTable("Autore");
 
-            modelBuilder.Entity<Autore>().HasKey(p => new { p.Cognome, p.Nome, p.DataNascita });
         }
     }
 }

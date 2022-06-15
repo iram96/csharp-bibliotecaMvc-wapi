@@ -30,8 +30,8 @@ namespace csharp_bibliotecaMvc.Data
 
             var autore = new Autore[]
         {
-            new Autore{AutoreId = 1, Nome="Carlo",Cognome="Magno" },
-            new Autore{AutoreId = 2,Nome="Albert",Cognome="Jo" }
+            new Autore{ Nome="Carlo",Cognome="Magno" },
+            new Autore{Nome="Albert",Cognome="Jo" }
 
         };
 

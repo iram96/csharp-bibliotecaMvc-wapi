@@ -14,6 +14,9 @@ string sConnectionString = builder.Configuration.GetConnectionString("DefaultCon
 builder.Services.AddDbContext<BibliotecaContext>(options =>
   options.UseSqlServer(sConnectionString));
 
+//builder.Services.AddDbContext<AutoriContext>(opt =>
+//    opt.UseInMemoryDatabase("ListaAutori"));
+
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 //end per connettersi al db

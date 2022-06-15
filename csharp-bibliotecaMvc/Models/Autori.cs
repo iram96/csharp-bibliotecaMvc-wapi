@@ -24,15 +24,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace csharp_bibliotecaMvc.Models
 {
+    [Table("Autore")]
     public class Autore
     {
         [Key]
         public int AutoreId { get; set; }
-        [Column(Order = 1), System.ComponentModel.DataAnnotations.Key]
+        //[Column(Order = 1), System.ComponentModel.DataAnnotations.Key]
         public string Cognome { get; set; }
-        [Column(Order = 2), System.ComponentModel.DataAnnotations.Key]
+        //[Column(Order = 2), System.ComponentModel.DataAnnotations.Key]
         public string Nome { get; set; }
-        [Column(Order = 3), System.ComponentModel.DataAnnotations.Key]
+        //[Column(Order = 3), System.ComponentModel.DataAnnotations.Key]
         public DateTime DataNascita { get; set; }
 
         public ICollection<Libro>? Libri { get; set; }
